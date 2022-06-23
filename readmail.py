@@ -16,7 +16,7 @@ def readMail(pop3_server, port, email):
     for i in range(numMessages):
       count = 0
       for msg in server.retr(i+1)[1]:
-        if count == 6 or count > 10:
+        if count == 6 or count > 10: # if subject or message
           msgList.append(msg)
         count += 1
     return msgList
