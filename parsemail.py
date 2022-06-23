@@ -11,7 +11,7 @@ def parseToPostList(msgList):
     message = ''
     if 'Subject: ' in msg:
       subject = msg.split(':')[1].strip()
-      for i in range(1, len(msgList)):
+      for i in range(1, len(msgList)): # start from latter
         if "Subject: " not in msgList[i].decode():
           message = message + msgList[i].decode() + '\n'
         else: break
