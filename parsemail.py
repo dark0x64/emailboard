@@ -8,7 +8,7 @@ class Post:
 def validateInputs(postList):
   for i in postList:
     subject = i.subject
-    if re.match('CreateThread\s+\"[ -~]+\"', subject) and re.match('CreateThread', subject) and re.match('ReplyThread\+[0-9]+', subject):
+    if re.match('CreateThread\s+\"[ -~]+\"', subject) or re.match('CreateThread', subject) or re.match('ReplyThread\+[0-9]+', subject):
       if not re.match('[ -~]+/g', i.message):
         postList.remove(i)
     else:
