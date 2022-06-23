@@ -11,6 +11,24 @@ Description...
 ```
 
 ```
-Subject: ReplyThread [Thread number]
+Subject: ReplyThread <Thread number>
 Description...
+```
+
+### Examples
+```
+Subject: CreateThread "Cats"
+I love cats!
+```
+
+```
+Subject: CreateThread
+I don't like dogs.
+```
+
+```
+Subject: ReplyThread 346
+Yes, indeed, verily.
+That is indeed very true.
+Surely.
 ```
