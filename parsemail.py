@@ -7,12 +7,16 @@ class Post:
 
 def validateInputs(postList):
   for i in postList:
-    subject = i.subject
-    if re.match('CreateThread\s+\"[ -~]+\"', subject) or re.match('CreateThread', subject) or re.match('ReplyThread\+[0-9]+', subject):
-      if not re.match('[ -~]+/g', i.message):
+    test_list = ['CreateThread\s+\"[ -~]+\"', 'CreateThread', 'ReplyThread\s+[0-9]+']
+    temp = '(?:% s)' % '|'.join(test_list) # match in test_list
+    if re.match(temp, i.subject):
+      if re.match('[\x00-\xFF]+', i.message): # match all ASCII characters
+        pass
+      else:
         postList.remove(i)
     else:
       postList.remove(i)
+  return postList
 
 def parseToPostList(msgList):
   postList = []
