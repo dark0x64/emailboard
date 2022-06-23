@@ -1,7 +1,18 @@
+import re
+
 class Post:
   def __init__(self, subject, message):
     self.subject = subject
     self.message = message
+
+def validateInputs(postList):
+  for i in postList:
+    subject = i.subject
+    if re.match('CreateThread\s+\"[ -~]+\"', subject) and re.match('CreateThread', subject) and re.match('ReplyThread\+[0-9]+', subject):
+      if not re.match('[ -~]+/g', i.message):
+        postList.remove(i)
+    else:
+      postList.remove(i)
 
 def parseToPostList(msgList):
   postList = []
@@ -20,4 +31,4 @@ def parseToPostList(msgList):
           count += 1
           break
       postList.append(Post(subject, message.strip()))
-  return postList
+  return validateInputs(postList)

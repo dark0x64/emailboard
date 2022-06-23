@@ -7,9 +7,6 @@ if __name__ == '__main__':
   EMAIL = 'dark0666.emailboard@gmail.com'
   msgList = readMail(POP3_SERVER, PORT, EMAIL)
   postList = parseToPostList(msgList)
-  print(postList)
-
-  print(postList[0].subject)
-  print(postList[0].message)
-  print(postList[1].subject)
-  print(postList[1].message)
+  for i in range(0, len(postList)):
+    print(postList[i].subject)
+    print(postList[i].message)
